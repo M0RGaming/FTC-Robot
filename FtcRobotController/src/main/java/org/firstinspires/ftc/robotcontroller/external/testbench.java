@@ -54,8 +54,8 @@ public class Test2 extends LinearOpMode {
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
-        leftDriveForward.setDirection(DcMotor.Direction.FORWARD);
-        rightDriveForward.setDirection(DcMotor.Direction.REVERSE);
+        leftDriveForward.setDirection(DcMotor.Direction.REVERSE);
+        rightDriveForward.setDirection(DcMotor.Direction.FORWARD);
         leftDriveBack.setDirection(DcMotor.Direction.FORWARD);
         rightDriveBack.setDirection(DcMotor.Direction.REVERSE);
 
