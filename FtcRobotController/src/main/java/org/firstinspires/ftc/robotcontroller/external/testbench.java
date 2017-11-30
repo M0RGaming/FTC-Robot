@@ -22,9 +22,9 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
+@TeleOp(name="Test Bench Attempt 2", group="Linear Opmode")
 
-public class Test2 extends LinearOpMode {
+public class TestBench2 extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -86,7 +86,7 @@ public class Test2 extends LinearOpMode {
             boolean auto = true;
 
             while (auto==true) {
-                if (gamepad1.a) {
+                if (this.gamepad1.a) {
                     auto = false;
                 };
             };
@@ -103,8 +103,8 @@ public class Test2 extends LinearOpMode {
 
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
-            leftPower  = -gamepad1.left_stick_y ;
-            rightPower = -gamepad1.right_stick_y ;
+            leftPower  = -this.gamepad1.left_stick_y ;
+            rightPower = -this.gamepad1.right_stick_y ;
             
 
 // Cancels out any unnessicary movement.
@@ -125,17 +125,17 @@ public class Test2 extends LinearOpMode {
 
 // Moves the servos on the press on the buttons, hopefully it works
 
-            if(gamepad1.x) {
+            if(this.gamepad1.x) {
 
                 rightClaw.setPosition(0.25);
                 leftClaw.setPosition(0.75);
 
-            } else if (gamepad1.b) {
+            } else if (this.gamepad1.b) {
 
                 rightClaw.setPosition(0.75);
                 leftClaw.setPosition(0.25);
 
-            } else if (gamepad1.start) {
+            } else if (this.gamepad1.start) {
 
                 shooter.setPosition(0.75);
 
