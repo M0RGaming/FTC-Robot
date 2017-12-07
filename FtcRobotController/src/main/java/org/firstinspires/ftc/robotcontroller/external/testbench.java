@@ -70,7 +70,7 @@ public class Test2 extends LinearOpMode {
     private DcMotor rightDriveBack = null;
     private Servo rightClaw = null;
     private Servo leftClaw = null;
-    private Servo shooter = null;
+//    private Servo shooter = null;
     private DcMotor rightRaise = null;
     private DcMotor leftRaise = null;
 
@@ -88,7 +88,7 @@ public class Test2 extends LinearOpMode {
         rightDriveForward  = hardwareMap.get(DcMotor.class, "right_drive_forward");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
-        shooter = hardwareMap.get(Servo.class, "shooter");
+//        shooter = hardwareMap.get(Servo.class, "shooter");
         rightRaise = hardwareMap.get(DcMotor.class, "right_lift");
         leftRaise = hardwareMap.get(DcMotor.class, "left_lift");
 
@@ -110,7 +110,7 @@ public class Test2 extends LinearOpMode {
 
         rightClaw.setPosition(0.5);
         leftClaw.setPosition(0.5);
-        shooter.setPosition(0.5);
+//        shooter.setPosition(0.5);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -205,7 +205,7 @@ public class Test2 extends LinearOpMode {
 
             } else if (gamepad2.start) {
 
-                shooter.setPosition(0.25);
+//                shooter.setPosition(0.25);
 
             };
             
@@ -214,7 +214,7 @@ public class Test2 extends LinearOpMode {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Left Claw Pos", leftClaw.getPosition());
             telemetry.addData("Right Claw Pos", rightClaw.getPosition());
-            telemetry.addData("Shooter Pos", shooter.getPosition());
+ //           telemetry.addData("Shooter Pos", shooter.getPosition());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.addData("Lift", "left (%.2f), right (%.2f)", liftPower, liftPower);
             telemetry.update();
