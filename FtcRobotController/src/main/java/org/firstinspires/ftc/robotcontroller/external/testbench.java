@@ -216,6 +216,7 @@ public class Test2 extends LinearOpMode {
             telemetry.addData("Right Claw Pos", rightClaw.getPosition());
             telemetry.addData("Shooter Pos", shooter.getPosition());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
+            telemetry.addData("Lift", "left (%.2f), right (%.2f)", liftPower, liftPower);
             telemetry.update();
         }
     }
