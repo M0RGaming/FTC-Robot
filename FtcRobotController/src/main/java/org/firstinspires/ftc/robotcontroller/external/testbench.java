@@ -1,4 +1,4 @@
-    package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -60,7 +60,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="Test Bench Attempt 2", group="Linear Opmode")
 
-public class TestBench2 extends LinearOpMode {
+public class Test2 extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -141,7 +141,7 @@ public class TestBench2 extends LinearOpMode {
                 CCEnabled = false;
             }
 
-            if (CCEnabled) = true; {
+            if (CCEnabled = true) {
 
                 boolean cruiseC = true;
 
