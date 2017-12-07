@@ -90,7 +90,7 @@ public class Test2 extends LinearOpMode {
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         shooter = hardwareMap.get(Servo.class, "shooter");
         rightRaise = hardwareMap.get(DcMotor.class, "right_lift");
-        leftRaise = hardwareMap.get(DcMotor.class, "left_lift")
+        leftRaise = hardwareMap.get(DcMotor.class, "left_lift");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -170,15 +170,15 @@ public class Test2 extends LinearOpMode {
             liftPower = -gamepad2.left_stick_y ;
 
 // Cancels out any unnessicary movement.
-            if(leftPower < 0.1) && (leftPower > -0.1) {
+            if(leftPower < 0.1 && leftPower > -0.1) {
                   rightPower = 0;                  
             };
             
-            if(rightPower < 0.1) && (rightPower > -0.1) {
+            if(rightPower < 0.1 && rightPower > -0.1) {
                   rightPower = 0;                  
             };
 
-            if(liftPower < 0.1) && (liftPower > -0.1) {
+            if(liftPower < 0.1 && liftPower > -0.1) {
                   rightPower = 0;                  
             };
 
