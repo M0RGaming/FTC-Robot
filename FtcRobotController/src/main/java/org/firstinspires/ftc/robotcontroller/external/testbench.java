@@ -95,9 +95,11 @@ public class TestBench2 extends LinearOpMode {
             boolean auto = true;
 
             while (auto==true) {
+                telemetry.addData("Auto is on")
                 if (this.gamepad1.a) {
                     auto = false;
                 };
+                telemetry.update();
             };
 
             // Choose to drive using either Tank Mode, or POV Mode
@@ -161,7 +163,7 @@ public class TestBench2 extends LinearOpMode {
 
             } else if (this.gamepad2.start) {
 
-                shooter.setPosition(0.75);
+                shooter.setPosition(0.25);
 
             };
             
