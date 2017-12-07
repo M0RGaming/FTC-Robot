@@ -1,4 +1,4 @@
-    package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -7,6 +7,42 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.Servo;
+
+
+/*
+
+
+
+
+
+*                                       
+*                                 |=||=||-|
+*                                 | || || |
+*                                 | || || |
+*                                 | || || |
+*                                 | || || |
+*                                 | || || |       
+*                                 | || || |       _____
+*                                 | || || |      |     |
+*                                 | || || | ___  |     |
+*                 <==============>| || || ||  _| |     |
+*                \----|___________| || || ||_|___|     |
+*                                 | || || |______|     |
+*     _____              _____    | || || |      |_____|
+*    /     \            /     \   | || || |
+*   /  / \  \--------- /  / \  \--| || || |
+*  |  |   |  |--------|  |   |  |-| || || |
+*   \  \ /  /          \  \ /  /  |-||=||=|
+*    \_____/            \_____/     
+
+
+
+
+
+
+*/
+
+
 
 
 /**
@@ -24,7 +60,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="Test Bench Attempt 2", group="Linear Opmode")
 
-public class TestBench2 extends LinearOpMode {
+public class Test2 extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -35,8 +71,8 @@ public class TestBench2 extends LinearOpMode {
     private Servo rightClaw = null;
     private Servo leftClaw = null;
     private Servo shooter = null;
-    private DcMotor rightraise = null;
-    private DcMotor leftraise = null;
+    private DcMotor rightRaise = null;
+    private DcMotor leftRaise = null;
 
     @Override
     public void runOpMode() {
@@ -53,8 +89,8 @@ public class TestBench2 extends LinearOpMode {
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
         shooter = hardwareMap.get(Servo.class, "shooter");
-        rightraise = hardwareMap.get(DcMotor.class, "right_lift");
-        leftraise = hardwareMap.get(DcMotor.class, "left_lift")
+        rightRaise = hardwareMap.get(DcMotor.class, "right_lift");
+        leftRaise = hardwareMap.get(DcMotor.class, "left_lift")
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -62,15 +98,15 @@ public class TestBench2 extends LinearOpMode {
         rightDriveForward.setDirection(DcMotor.Direction.FORWARD);
         leftDriveBack.setDirection(DcMotor.Direction.FORWARD);
         rightDriveBack.setDirection(DcMotor.Direction.REVERSE);
-        rightraise.setDirection(DcMotor.Direction.FORWARD);
-        leftraise.setDirection(DcMotor.Direction.REVERSE);
+        rightRaise.setDirection(DcMotor.Direction.FORWARD);
+        leftRaise.setDirection(DcMotor.Direction.REVERSE);
 
         leftDriveForward.setPower(0);
         rightDriveForward.setPower(0);
         leftDriveBack.setPower(0);
         rightDriveBack.setPower(0);
-        rightraise.setpower(0);
-        leftraise.setpower(0);
+        rightRaise.setPower(0);
+        leftRaise.setPower(0);
 
         rightClaw.setPosition(0.5);
         leftClaw.setPosition(0.5);
@@ -79,6 +115,9 @@ public class TestBench2 extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
+
+        boolean auto = true;
+        boolean CCEnabled = true;
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
@@ -92,15 +131,33 @@ public class TestBench2 extends LinearOpMode {
             double backPos;
             double liftPower;
 
-            boolean auto = true;
-
             while (auto==true) {
+<<<<<<< HEAD
                 telemetry.addData("Auto is on")
                 if (this.gamepad1.a) {
+=======
+                if (gamepad1.a) {
+>>>>>>> 8f112951f7a6c2f120ffe639b23afacc177e9d58
                     auto = false;
                 };
                 telemetry.update();
             };
+
+            if (gamepad1.y) {
+                CCEnabled = false;
+            }
+
+            if (CCEnabled = true) {
+
+                boolean cruiseC = true;
+
+                while (cruiseC==true) {
+                    if (gamepad1.a) {
+                        cruiseC = false;
+                    };
+                };
+            };
+
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -114,30 +171,21 @@ public class TestBench2 extends LinearOpMode {
 
             // Tank Mode uses one stick to control each wheel.
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
-            leftPower  = -this.gamepad1.left_stick_y ;
-            rightPower = -this.gamepad1.right_stick_y ;
-            liftPower = -this.gamepad2.left_stick_y ;
+            leftPower  = -gamepad1.left_stick_y ;
+            rightPower = -gamepad1.right_stick_y ;
+            liftPower = -gamepad2.left_stick_y ;
 
 // Cancels out any unnessicary movement.
-            if(leftPower<0.1) {
-                if(leftPower>-0.1) {
-                  leftPower = 0;  
-                }
-                
+            if(leftPower < 0.1) && (leftPower > -0.1) {
+                  rightPower = 0;                  
             };
             
-            if(rightPower<0.1) {
-                if(rightPower>-0.1) {
-                  rightPower = 0;  
-                }
-                
+            if(rightPower < 0.1) && (rightPower > -0.1) {
+                  rightPower = 0;                  
             };
 
-            if(liftPower<0.1) {
-                if(liftPower>-0.1) {
-                 liftPower = 0;   
-                }
-                
+            if(liftPower < 0.1) && (liftPower > -0.1) {
+                  rightPower = 0;                  
             };
 
             // Send calculated power to wheels
@@ -145,23 +193,23 @@ public class TestBench2 extends LinearOpMode {
             rightDriveForward.setPower(rightPower);
             leftDriveBack.setPower(leftPower);
             rightDriveBack.setPower(rightPower);
-            rightraise.setpower(liftPower);
-            leftraise.setPower(liftPower);
+            rightRaise.setPower(liftPower);
+            leftRaise.setPower(liftPower);
             
 
 // Moves the servos on the press on the buttons, hopefully it works
 
-            if(this.gamepad2.x) {
+            if(gamepad2.x) {
 
                 rightClaw.setPosition(0.25);
                 leftClaw.setPosition(0.75);
 
-            } else if (this.gamepad2.b) {
+            } else if (gamepad2.b) {
 
                 rightClaw.setPosition(0.75);
                 leftClaw.setPosition(0.25);
 
-            } else if (this.gamepad2.start) {
+            } else if (gamepad2.start) {
 
                 shooter.setPosition(0.25);
 
