@@ -132,12 +132,10 @@ public class Test2 extends LinearOpMode {
             double liftPower;
 
             while (auto==true) {
-<<<<<<< HEAD
                 telemetry.addData("Auto is on")
                 if (this.gamepad1.a) {
-=======
                 if (gamepad1.a) {
->>>>>>> 8f112951f7a6c2f120ffe639b23afacc177e9d58
+
                     auto = false;
                 };
                 telemetry.update();
