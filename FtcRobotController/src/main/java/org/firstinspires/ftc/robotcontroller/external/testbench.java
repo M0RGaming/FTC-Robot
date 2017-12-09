@@ -70,7 +70,7 @@ public class Test2 extends LinearOpMode {
     private DcMotor rightDriveBack = null;
     private Servo rightClaw = null;
     private Servo leftClaw = null;
-//    private Servo shooter = null;
+    private Servo shooter = null;
     private DcMotor rightRaise = null;
     private DcMotor leftRaise = null;
 
@@ -88,7 +88,7 @@ public class Test2 extends LinearOpMode {
         rightDriveForward  = hardwareMap.get(DcMotor.class, "right_drive_forward");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
         leftClaw = hardwareMap.get(Servo.class, "left_claw");
-//        shooter = hardwareMap.get(Servo.class, "shooter");
+        shooter = hardwareMap.get(Servo.class, "shooter");
         rightRaise = hardwareMap.get(DcMotor.class, "right_lift");
         leftRaise = hardwareMap.get(DcMotor.class, "left_lift");
 
@@ -110,15 +110,15 @@ public class Test2 extends LinearOpMode {
 
         rightClaw.setPosition(0.5);
         leftClaw.setPosition(0.5);
-//        shooter.setPosition(0.5);
+        shooter.setPosition(0.5);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
-
+/*
         boolean auto = true;
         boolean CCEnabled = true;
-
+*/
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             
@@ -130,13 +130,16 @@ public class Test2 extends LinearOpMode {
             double leftPos;
             double backPos;
             double liftPower;
+/*
+            boolean auto = true;
 
             while (auto==true) {
                 if (gamepad1.a) {
                     auto = false;
                 };
             };
-
+*/
+/*
             if (gamepad1.y) {
                 CCEnabled = false;
             }
@@ -151,7 +154,7 @@ public class Test2 extends LinearOpMode {
                     };
                 };
             };
-
+*/
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -171,7 +174,7 @@ public class Test2 extends LinearOpMode {
 
 // Cancels out any unnessicary movement.
             if(leftPower < 0.1 && leftPower > -0.1) {
-                  rightPower = 0;                  
+                  leftPower = 0;                  
             };
             
             if(rightPower < 0.1 && rightPower > -0.1) {
@@ -179,7 +182,7 @@ public class Test2 extends LinearOpMode {
             };
 
             if(liftPower < 0.1 && liftPower > -0.1) {
-                  rightPower = 0;                  
+                  liftPower = 0;                  
             };
 
             // Send calculated power to wheels
@@ -200,12 +203,12 @@ public class Test2 extends LinearOpMode {
 
             } else if (gamepad2.b) {
 
-                rightClaw.setPosition(0.75);
-                leftClaw.setPosition(0.25);
+                rightClaw.setPosition(1);
+                leftClaw.setPosition(0);
 
             } else if (gamepad2.start) {
 
-//                shooter.setPosition(0.25);
+                shooter.setPosition(0.25);
 
             };
             
@@ -214,7 +217,7 @@ public class Test2 extends LinearOpMode {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Left Claw Pos", leftClaw.getPosition());
             telemetry.addData("Right Claw Pos", rightClaw.getPosition());
- //           telemetry.addData("Shooter Pos", shooter.getPosition());
+            telemetry.addData("Shooter Pos", shooter.getPosition());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.addData("Lift", "left (%.2f), right (%.2f)", liftPower, liftPower);
             telemetry.update();
